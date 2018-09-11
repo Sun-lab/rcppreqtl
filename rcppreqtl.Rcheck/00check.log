@@ -1,0 +1,15 @@
+* using log directory ‘/Users/wsun/research/GitHub/rcppreqtl/rcppreqtl.Rcheck’
+* using R version 3.5.0 (2018-04-23)
+* using platform: x86_64-apple-darwin15.6.0 (64-bit)
+* using session charset: UTF-8
+* checking for file ‘rcppreqtl/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘rcppreqtl’ version ‘0.99.0’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required and available but unsuitable version: ‘RcppEigen’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
