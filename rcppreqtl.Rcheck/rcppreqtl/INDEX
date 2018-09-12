@@ -1,0 +1,13 @@
+fit                     Optimization wrapper, maximizing the joint
+                        model of total (TReC) and allele specific (ASE)
+                        counts for autosomes
+fitsh                   Optimization wrapper, maximizing the joint
+                        model of total (TReC) and allele specific (ASE)
+                        counts for autosomes
+makeXmatr               Create example design matrix for simulations
+readCounts              A list object that should be used as input to
+                        optimization fit or fitsh function.
+simu2                   Simulate a dataset in a format acceptable by a
+                        fit function
+simu4                   Simulate a dataset in a format acceptable by a
+                        fit function

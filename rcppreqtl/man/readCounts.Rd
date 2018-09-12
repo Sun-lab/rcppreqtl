@@ -5,8 +5,8 @@
   It should contain at least total read counts (TReC), overall allele-specific counts (ASE), paternal allele-specific counts and haplotype classification 0 to 4. Also should include X matrix with covariates such as intercept, library depth, principal components.
 }
 \value{  
-  \item{haplotype}{vector defining the haplotype status of the individual - AB=0, BA=1, AA=2, BB=3 coded as PaternalMaternal haplotypes}
-  \item{trc}{matrix of TReC counts.}
+  \item{haplotype}{a matrix defining the haplotype status of the individual for each gene - AB=0, BA=1, AA=2, BB=3 coded as PaternalMaternal haplotypes. Each row - one gene}
+  \item{trc}{matrix of TReC counts. Each row - one gene}
   \item{asn}{matrix of ASE counts for subject (column) for corresponding genes (row).}  
   \item{asnp}{matrix of ASE counts belonging to paternal allele, for correponding subjects and genes as in \bold{asn}.}  
   \item{haplotypeA}{haplotype modification for a setup with allele-specific reads collected for multiple SNPs in a gene. This block by default is NULL, but can be used by simulation function to study scenarios when reads are collected not on gene level, but on SNP level}
@@ -18,7 +18,7 @@
 }
 \author{ Vasyl Zhabotynsky vasyl@unc.edu }
 \keyword{ utilities }
-\seealso{\code{\link{fit}},\code{\link{simu}}.}
+\seealso{\code{\link{fit}}, \code{\link{fitsh}}, \code{\link{simu2}}, \code{\link{simu4}}.}
 
 \examples{\dontrun{
 # see total read counts (TReC) for first 2 X chromosome genes of a data example:

@@ -1,0 +1,1020 @@
+* installing *source* package 'rcppreqtl' ...
+** libs
+
+*** arch - i386
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c brent.cpp -o brent.o
+brent.cpp: In function 'double cppoptlib::local_min(double, double, double, cppoptlib::Problem<double>&, double&)':
+brent.cpp:363:10: warning: 'd' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   double d;
+          ^
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c function.cpp -o function.o
+function.cpp: In function 'int fit_TReCASE_unphased(double*, double*, double*, DATA, PARA, double*, double*)':
+function.cpp:2463:19: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+   } while ((p.ASE && vnew[p.AD] < boundary || *loglike <= logLnew - TOL6) && step > TOL4); //inner_while
+                   ^
+function.cpp:2465:14: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+   if ((p.ASE && vnew[p.AD] < boundary || *loglike <= logLnew - TOL6) && step <= TOL4) { ll = 3; goto end; }
+              ^
+function.cpp: In function 'void evaluate_effiScore_trans(int*, double*, double*, double**, DATA, PARA, double*)':
+function.cpp:2688:37: warning: unused variable 'E22' [-Wunused-variable]
+  double**E12_22=NULL, **E12=NULL, **E22=NULL;
+                                     ^
+function.cpp: In function 'void evaluate_effiScore_TREC_TRECASE(int*, int*, double*, DATA, PARA, double***, double*, double*)':
+function.cpp:4400:10: warning: unused variable 'Umax' [-Wunused-variable]
+   double Umax = 0.0, Umin = 0.0;
+          ^
+function.cpp:4400:22: warning: unused variable 'Umin' [-Wunused-variable]
+   double Umax = 0.0, Umin = 0.0;
+                      ^
+function.cpp: In function 'void permutation(double (*)[5000], int, DATA, PARA, double*, double*)':
+function.cpp:5098:9: warning: unused variable 'index3' [-Wunused-variable]
+     int index3 = d.N[p0];
+         ^
+function.cpp: In function 'int eQTL_mapping_per_gene(FILE**, int, int, char**, int*, int*, char**, int*, double*, double, double, int, int, int, int, DATA, PARA, RESULTS, int**)':
+function.cpp:5354:9: warning: unused variable 'phi_T_orig' [-Wunused-variable]
+  double phi_T_orig = 1.0/((var_T-mu_T)/mu_T/mu_T);
+         ^
+function.cpp: In function 'void eQTL_mapping(FILE**, int, int, int, int, double, int, int, double**, int, char**, int*, int*, int**, int**, int**, int, int, char**, int*, double*, double, int**)':
+function.cpp:5873:7: warning: unused variable 'll' [-Wunused-variable]
+   int ll = eQTL_mapping_per_gene(foutput_file, chr_working, itx, txName, txStart, txEnd, rsSNP, posSNP, freqSNP, MAF_cutoff, corr2_pruning,
+       ^
+function.cpp: In function 'int fit_ASE_null(double*, double*, double*, DATA, PARA)':
+function.cpp:1460:23: warning: 'boundary' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  if ((iter == ITMAX0) || (v[AD] < boundary)) {
+                       ^
+function.cpp: In function 'int fit_TReC_null(double*, double*, double*, DATA, int, int, char*)':
+function.cpp:1568:38: warning: 'phi' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     d.sum[p0] += tmp + (T-1)*log(mu+T*phi) - mu - T*phi;
+                                      ^
+function.cpp: In function 'int fit_TReCASE_unphased(double*, double*, double*, DATA, PARA, double*, double*)':
+function.cpp:2041:76: warning: 'phi' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      d.sum[p0] += lgamma(T+phi) - d.lgamma_int[(int)T] - (phi+T)*log(phi+mu) + T*log(mu);
+                                                                            ^
+function.cpp:2003:63: warning: 'boundary' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (index3 > 1) boundary = MAX(boundary, -1.0/(index3-1));
+                                                               ^
+function.cpp:2167:26: warning: 'tmu_i' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     double tmu = tmu_i[p0];
+                          ^
+function.cpp:2439:25: warning: 'mu_i' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      double mu = mu_i[p0];
+                         ^
+function.cpp:857:19: warning: 'vecR' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   vecR[1+i] = X[i];
+                   ^
+function.cpp:1888:10: note: 'vecR' was declared here
+  double *vecR, phi, *mu_i, *tmu_i;
+          ^
+function.cpp:2072:80: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                                ^
+function.cpp:2076:70: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                      ^
+function.cpp:2071:59: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                           ^
+function.cpp:2075:50: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                  ^
+function.cpp:2322:89: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                         ^
+function.cpp:2321:90: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                          ^
+function.cpp:2076:67: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                   ^
+function.cpp:2554:27: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      double p1_tmp = p1[p0];
+                           ^
+function.cpp:1854:19: warning: 'max_N' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  int pow1, max_M, max_N;
+                   ^
+function.cpp:2366:27: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+        if (d.hap1[p0][pp] / pow1 == 0) {     
+                           ^
+function.cpp: In function 'void evaluate_effiScore_trans(int*, double*, double*, double**, DATA, PARA, double*)':
+function.cpp:3125:81: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                 ^
+function.cpp:2935:80: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                                ^
+function.cpp:2939:70: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                      ^
+function.cpp:2934:59: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                           ^
+function.cpp:2938:50: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                  ^
+function.cpp:2765:88: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                        ^
+function.cpp:2764:89: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                         ^
+function.cpp:2939:67: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                   ^
+function.cpp:2984:28: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       double p1_tmp = p1[p0];
+                            ^
+function.cpp:2811:26: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (d.hap1[p0][pp] / pow1 == 0) {     
+                          ^
+function.cpp: In function 'void evaluate_effiScore_TREC_TRECASE(int*, int*, double*, DATA, PARA, double***, double*, double*)':
+function.cpp:4187:79: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                               ^
+function.cpp:4191:69: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                     ^
+function.cpp:4186:58: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                          ^
+function.cpp:4190:49: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                 ^
+function.cpp:3802:28: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  double *p1, *r0, *p0_r0, *l_r0, *l_r0_r, *p0_r0_r, *l_r0_r_2, *p0_r0_r_2;
+                            ^
+function.cpp:3936:45: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     d.sum[p0] = p0_r0[index1] + p0_r0[index2] - l_r0[index3] + log(v[p.FREQ+p.h[d.hap1[p0][pp]]]*v[p.FREQ+p.h[d.hap2[p0][pp]]]);
+                                             ^
+function.cpp:3914:93: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      double l_p_r0 = 0;  for (r = 1; r <= index2; r++) l_p_r0 = l_p_r0 + log(1-p1[p0] + r0[r]);
+                                                                                             ^
+function.cpp:3802:10: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  double *p1, *r0, *p0_r0, *l_r0, *l_r0_r, *p0_r0_r, *l_r0_r_2, *p0_r0_r_2;
+          ^
+function.cpp:3899:25: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (d.hap1[p0][pp] / pow1 == 0) {     
+                         ^
+function.cpp:4060:80: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                ^
+function.cpp: In function 'void permutation(double (*)[5000], int, DATA, PARA, double*, double*)':
+function.cpp:4763:80: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                ^
+function.cpp:4709:40: warning: 'exp_eta' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     exp_eta[p0] += v[p.REG+j] * vecR[j]; 
+                                        ^
+function.cpp:4844:36: warning: 'p0_r0_r_d2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_d2[r]   = p0_r0_r_d2[r-1]+ (r-1)/((pn+r0[r])*(pn+r0[r]));
+                                    ^
+function.cpp:4843:35: warning: 'p0_r0_1_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_1_2[r]    = p0_r0_1_2[r-1] + 1/((pn+r0[r])*(pn+r0[r]));
+                                   ^
+function.cpp:4842:33: warning: 'p0_r0_1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_1[r]      = p0_r0_1[r-1]   + 1/(pn + r0[r]);
+                                 ^
+function.cpp:4841:79: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                               ^
+function.cpp:4848:69: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                     ^
+function.cpp:4840:58: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                          ^
+function.cpp:4847:49: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                 ^
+function.cpp:4672:87: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                       ^
+function.cpp:4671:88: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                        ^
+function.cpp:4848:66: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                  ^
+function.cpp:5112:29: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (d_hap1_permip0_pp / pow1 == 0) {     
+                             ^
+function.cpp: In function 'int eQTL_mapping_per_gene(FILE**, int, int, char**, int*, int*, char**, int*, double*, double, double, int, int, int, int, DATA, PARA, RESULTS, int**)':
+function.cpp:5745:73: warning: 'v_TReCASE' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (ll_TReCASE==0) fprintf(foutpmin[t], "      %7.4lf", v_TReCASE);
+                                                                         ^
+function.cpp:5745:7: warning: 'll_TReCASE' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (ll_TReCASE==0) fprintf(foutpmin[t], "      %7.4lf", v_TReCASE);
+       ^
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterative.cpp -o iterative.o
+In file included from iterative.cpp:7:0:
+solver/lbfgsbsolver.h:138:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+     #pragma omp parallel for
+ ^
+iterative.cpp: In function 'double cppoptlib::ASE_lik2(cppoptlib::Vector<double>, cppoptlib::Vector<double>, cppoptlib::Vector<double>, double, int)':
+iterative.cpp:46:7: warning: unused variable 'k' [-Wunused-variable]
+   int k;
+       ^
+iterative.cpp: In function 'double max_trec1irw0(int*, int*, int*, double*, int*, double*, double*, int*)':
+iterative.cpp:115:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:120:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:146:12: warning: unused variable 'trynlin' [-Wunused-variable]
+     double trynlin = nlin[0]; //for line search
+            ^
+iterative.cpp:153:12: warning: variable 'res' set but not used [-Wunused-but-set-variable]
+     double res, x = 0;
+            ^
+iterative.cpp:154:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:154:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:157:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:157:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trec1irw_b0(int*, int*, int*, double*, int*, double*, double*, int*)':
+iterative.cpp:302:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:314:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:345:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:345:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:346:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:346:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trec1irw_b1(int*, int*, int*, double*, int*, double*, double*, int*, double*)':
+iterative.cpp:507:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:551:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:551:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:552:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:552:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b0(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterative.cpp:715:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:727:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now
+               ^
+iterative.cpp:765:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:765:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:766:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:766:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b1(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*, double*)':
+iterative.cpp:951:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:1001:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:1001:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:1002:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:1002:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b01(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterative.cpp:1188:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:1200:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:1240:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:1240:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:1241:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:1241:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp:1242:12: warning: unused variable 'curlbnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+            ^
+iterative.cpp:1242:20: warning: unused variable 'curubnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+                    ^
+iterative.cpp:1243:9: warning: unused variable 'genej' [-Wunused-variable]
+     int genej = 0;
+         ^
+In file included from solver/bfgssolver.h:5:0,
+                 from iterative.cpp:6:
+solver/../linesearch/morethuente.h: In instantiation of 'static int cppoptlib::MoreThuente<Dtype, P, Ord>::cvsrch(P&, cppoptlib::Vector<T>&, Dtype, cppoptlib::Vector<T>&, Dtype&, cppoptlib::Vector<T>&) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]':
+solver/../linesearch/morethuente.h:38:39:   required from 'static Dtype cppoptlib::MoreThuente<Dtype, P, Ord>::linesearch(cppoptlib::Vector<T>&, cppoptlib::Vector<T>&, P&, Dtype) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+solver/bfgssolver.h:37:104:   required from 'void cppoptlib::BfgsSolver<T>::minimize(cppoptlib::Problem<T>&, cppoptlib::Vector<T>&) [with T = double; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+iterative.cpp:1342:43:   required from here
+solver/../linesearch/morethuente.h:99:32: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+       (brackt && (stp <= stmin | stp >= stmax))
+                                ^
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterative2.cpp -o iterative2.o
+iterative2.cpp: In function 'void ase(int*, double*, double*, double*, char**, double*, int*, int*, int*, int*, int*, int*, int*, int*)':
+iterative2.cpp:285:10: warning: unused variable 'pi0' [-Wunused-variable]
+   double pi0, th0, pi1, th1;
+          ^
+iterative2.cpp:376:10: warning: unused variable 'lower0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+          ^
+iterative2.cpp:376:18: warning: unused variable 'upper0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+                  ^
+iterative2.cpp:376:26: warning: unused variable 'grH0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+                          ^
+iterative2.cpp:446:32: warning: variable 'failB' set but not used [-Wunused-but-set-variable]
+   int npara, lmm, fail, failA, failB, fncount, grcount, maxit, nREPORT;
+                                ^
+In file included from iterative2.h:18:0,
+                 from iterative2.cpp:9:
+lbfgsb1.h: At global scope:
+lbfgsb1.h:10:15: warning: 'double fminfn1(int, double*, void*, SEXP)' declared 'static' but never defined [-Wunused-function]
+ static double fminfn1(int n, double *p, void *ex, SEXP x1);
+               ^
+lbfgsb1.h:11:13: warning: 'void fmingr1(int, double*, double*, void*, SEXP)' declared 'static' but never defined [-Wunused-function]
+ static void fmingr1(int n, double *p, double *df, void *ex, SEXP x1);
+             ^
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterativesh.cpp -o iterativesh.o
+In file included from iterativesh.cpp:7:0:
+solver/lbfgsbsolver.h:138:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+     #pragma omp parallel for
+ ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b0(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterativesh.cpp:198:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:205:22: warning: unused variable 'res3' [-Wunused-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:210:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now
+               ^
+iterativesh.cpp:248:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:248:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:249:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:249:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b1(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*, double*)':
+iterativesh.cpp:432:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:439:22: warning: unused variable 'res3' [-Wunused-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:482:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:482:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:483:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:483:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b01(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterativesh.cpp:667:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:674:22: warning: variable 'res3' set but not used [-Wunused-but-set-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:679:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterativesh.cpp:719:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:719:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:720:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:720:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp:721:12: warning: unused variable 'curlbnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+            ^
+iterativesh.cpp:721:20: warning: unused variable 'curubnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+                    ^
+iterativesh.cpp:722:9: warning: unused variable 'genej' [-Wunused-variable]
+     int genej = 0;
+         ^
+In file included from solver/bfgssolver.h:5:0,
+                 from iterativesh.cpp:6:
+solver/../linesearch/morethuente.h: In instantiation of 'static int cppoptlib::MoreThuente<Dtype, P, Ord>::cvsrch(P&, cppoptlib::Vector<T>&, Dtype, cppoptlib::Vector<T>&, Dtype&, cppoptlib::Vector<T>&) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]':
+solver/../linesearch/morethuente.h:38:39:   required from 'static Dtype cppoptlib::MoreThuente<Dtype, P, Ord>::linesearch(cppoptlib::Vector<T>&, cppoptlib::Vector<T>&, P&, Dtype) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+solver/bfgssolver.h:37:104:   required from 'void cppoptlib::BfgsSolver<T>::minimize(cppoptlib::Problem<T>&, cppoptlib::Vector<T>&) [with T = double; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+iterativesh.cpp:821:43:   required from here
+solver/../linesearch/morethuente.h:99:32: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+       (brackt && (stp <= stmin | stp >= stmax))
+                                ^
+c:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c lbfgsb1.cpp -o lbfgsb1.o
+lbfgsb1.cpp: In function 'void setulb1(int, int, double*, double*, double*, int*, double*, double*, double, double*, double*, int*, char*, int, int*, int*, double*)':
+lbfgsb1.cpp:336:15: warning: variable 'l1' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+               ^
+lbfgsb1.cpp:336:19: warning: variable 'l2' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+                   ^
+lbfgsb1.cpp:336:23: warning: variable 'l3' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+                       ^
+lbfgsb1.cpp: In function 'void mainlb1(int, int, double*, double*, double*, int*, double*, double*, double, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int*, int*, int*, char*, int, char*, int*, int*, double*)':
+lbfgsb1.cpp:587:12: warning: variable 'time' set but not used [-Wunused-but-set-variable]
+     double time;
+            ^
+lbfgsb1.cpp: In function 'void prn1lb1(int, int, double*, double*, double*, int, double)':
+lbfgsb1.cpp:3792:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("L =", l, n);
+                         ^
+lbfgsb1.cpp:3793:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("X0 =",x, n);
+                         ^
+lbfgsb1.cpp:3794:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("U =", u, n);
+                         ^
+lbfgsb1.cpp: In function 'void prn2lb1(int, double*, double*, double*, int, int, int, int, double, int, char*, int, int, double, double)':
+lbfgsb1.cpp:3808:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("X =", x, n);
+                         ^
+lbfgsb1.cpp:3809:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("G =", g, n);
+                         ^
+lbfgsb1.cpp: In function 'void prn3lb1(int, double*, double*, char*, int, int, int, int, int, int, int, double, int, char*, int, double, double, int)':
+lbfgsb1.cpp:3827:40: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  if (iprint >= 100) pvector("X =", x, n);
+                                        ^
+lbfgsb1.cpp: At global scope:
+lbfgsb1.cpp:3983:15: warning: 'double fminfn1(int, double*, void*, SEXP)' defined but not used [-Wunused-function]
+ static double fminfn1(int n, double *p, void *ex, SEXP x1)
+               ^
+lbfgsb1.cpp:4009:13: warning: 'void fmingr1(int, double*, double*, void*, SEXP)' defined but not used [-Wunused-function]
+ static void fmingr1(int n, double *p, double *df, void *ex, SEXP x1)
+             ^
+c:/Rtools/mingw_32/bin/gcc  -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"        -O3 -Wall  -std=gnu99 -mtune=generic -c utility.c -o utility.o
+c:/Rtools/mingw_32/bin/g++ -shared -s -static-libgcc -o rcppreqtl.dll tmp.def brent.o function.o iterative.o iterative2.o iterativesh.o lbfgsb1.o utility.o -LC:/PROGRA~1/R/R-34~1.4/bin/i386 -lRlapack -LC:/PROGRA~1/R/R-34~1.4/bin/i386 -lRblas -lgfortran -lm -lquadmath -LC:/PROGRA~1/R/R-34~1.4/bin/i386 -lR
+installing to C:/Users/Vasyl/Documents/rcppreqtl/rcppreqtl.Rcheck/rcppreqtl/libs/i386
+
+*** arch - x64
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c brent.cpp -o brent.o
+brent.cpp: In function 'double cppoptlib::local_min(double, double, double, cppoptlib::Problem<double>&, double&)':
+brent.cpp:363:10: warning: 'd' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   double d;
+          ^
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c function.cpp -o function.o
+function.cpp: In function 'int fit_TReCASE_unphased(double*, double*, double*, DATA, PARA, double*, double*)':
+function.cpp:2463:19: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+   } while ((p.ASE && vnew[p.AD] < boundary || *loglike <= logLnew - TOL6) && step > TOL4); //inner_while
+                   ^
+function.cpp:2465:14: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+   if ((p.ASE && vnew[p.AD] < boundary || *loglike <= logLnew - TOL6) && step <= TOL4) { ll = 3; goto end; }
+              ^
+function.cpp: In function 'void evaluate_effiScore_trans(int*, double*, double*, double**, DATA, PARA, double*)':
+function.cpp:2688:37: warning: unused variable 'E22' [-Wunused-variable]
+  double**E12_22=NULL, **E12=NULL, **E22=NULL;
+                                     ^
+function.cpp: In function 'void evaluate_effiScore_TREC_TRECASE(int*, int*, double*, DATA, PARA, double***, double*, double*)':
+function.cpp:4400:10: warning: unused variable 'Umax' [-Wunused-variable]
+   double Umax = 0.0, Umin = 0.0;
+          ^
+function.cpp:4400:22: warning: unused variable 'Umin' [-Wunused-variable]
+   double Umax = 0.0, Umin = 0.0;
+                      ^
+function.cpp: In function 'void permutation(double (*)[5000], int, DATA, PARA, double*, double*)':
+function.cpp:5098:9: warning: unused variable 'index3' [-Wunused-variable]
+     int index3 = d.N[p0];
+         ^
+function.cpp: In function 'int eQTL_mapping_per_gene(FILE**, int, int, char**, int*, int*, char**, int*, double*, double, double, int, int, int, int, DATA, PARA, RESULTS, int**)':
+function.cpp:5354:9: warning: unused variable 'phi_T_orig' [-Wunused-variable]
+  double phi_T_orig = 1.0/((var_T-mu_T)/mu_T/mu_T);
+         ^
+function.cpp: In function 'void eQTL_mapping(FILE**, int, int, int, int, double, int, int, double**, int, char**, int*, int*, int**, int**, int**, int, int, char**, int*, double*, double, int**)':
+function.cpp:5873:7: warning: unused variable 'll' [-Wunused-variable]
+   int ll = eQTL_mapping_per_gene(foutput_file, chr_working, itx, txName, txStart, txEnd, rsSNP, posSNP, freqSNP, MAF_cutoff, corr2_pruning,
+       ^
+function.cpp: In function 'int fit_ASE_null(double*, double*, double*, DATA, PARA)':
+function.cpp:1460:23: warning: 'boundary' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  if ((iter == ITMAX0) || (v[AD] < boundary)) {
+                       ^
+function.cpp: In function 'int fit_TReC_null(double*, double*, double*, DATA, int, int, char*)':
+function.cpp:1568:38: warning: 'phi' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     d.sum[p0] += tmp + (T-1)*log(mu+T*phi) - mu - T*phi;
+                                      ^
+function.cpp: In function 'int fit_TReCASE_unphased(double*, double*, double*, DATA, PARA, double*, double*)':
+function.cpp:2041:76: warning: 'phi' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      d.sum[p0] += lgamma(T+phi) - d.lgamma_int[(int)T] - (phi+T)*log(phi+mu) + T*log(mu);
+                                                                            ^
+function.cpp:2003:63: warning: 'boundary' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (index3 > 1) boundary = MAX(boundary, -1.0/(index3-1));
+                                                               ^
+function.cpp:2167:26: warning: 'tmu_i' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     double tmu = tmu_i[p0];
+                          ^
+function.cpp:2439:25: warning: 'mu_i' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      double mu = mu_i[p0];
+                         ^
+function.cpp:857:19: warning: 'vecR' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   vecR[1+i] = X[i];
+                   ^
+function.cpp:1888:10: note: 'vecR' was declared here
+  double *vecR, phi, *mu_i, *tmu_i;
+          ^
+function.cpp:2072:80: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                                ^
+function.cpp:2076:70: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                      ^
+function.cpp:2071:59: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                           ^
+function.cpp:2075:50: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                  ^
+function.cpp:2322:89: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                         ^
+function.cpp:2321:90: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                          ^
+function.cpp:2076:67: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                   ^
+function.cpp:2554:27: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      double p1_tmp = p1[p0];
+                           ^
+function.cpp:1854:19: warning: 'max_N' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  int pow1, max_M, max_N;
+                   ^
+function.cpp:2366:27: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+        if (d.hap1[p0][pp] / pow1 == 0) {     
+                           ^
+function.cpp: In function 'void evaluate_effiScore_trans(int*, double*, double*, double**, DATA, PARA, double*)':
+function.cpp:3125:81: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                 ^
+function.cpp:2935:80: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                                ^
+function.cpp:2939:70: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                      ^
+function.cpp:2934:59: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                           ^
+function.cpp:2938:50: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                  ^
+function.cpp:2765:88: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                        ^
+function.cpp:2764:89: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                         ^
+function.cpp:2939:67: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                   ^
+function.cpp:2984:28: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       double p1_tmp = p1[p0];
+                            ^
+function.cpp:2811:26: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (d.hap1[p0][pp] / pow1 == 0) {     
+                          ^
+function.cpp: In function 'void evaluate_effiScore_TREC_TRECASE(int*, int*, double*, DATA, PARA, double***, double*, double*)':
+function.cpp:4187:79: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                               ^
+function.cpp:4191:69: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                     ^
+function.cpp:4186:58: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                          ^
+function.cpp:4190:49: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                 ^
+function.cpp:3802:28: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  double *p1, *r0, *p0_r0, *l_r0, *l_r0_r, *p0_r0_r, *l_r0_r_2, *p0_r0_r_2;
+                            ^
+function.cpp:3936:45: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     d.sum[p0] = p0_r0[index1] + p0_r0[index2] - l_r0[index3] + log(v[p.FREQ+p.h[d.hap1[p0][pp]]]*v[p.FREQ+p.h[d.hap2[p0][pp]]]);
+                                             ^
+function.cpp:3802:15: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  double *p1, *r0, *p0_r0, *l_r0, *l_r0_r, *p0_r0_r, *l_r0_r_2, *p0_r0_r_2;
+               ^
+function.cpp:3802:10: warning: 'p1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  double *p1, *r0, *p0_r0, *l_r0, *l_r0_r, *p0_r0_r, *l_r0_r_2, *p0_r0_r_2;
+          ^
+function.cpp:3899:25: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (d.hap1[p0][pp] / pow1 == 0) {     
+                         ^
+function.cpp:4060:80: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                ^
+function.cpp: In function 'void permutation(double (*)[5000], int, DATA, PARA, double*, double*)':
+function.cpp:4763:80: warning: 'c' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     Ui[p0][p.TD] += digama(T+phi, &ifault) - (phi+T)/(phi+mu) - log(phi+mu) + c;
+                                                                                ^
+function.cpp:4709:40: warning: 'exp_eta' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     exp_eta[p0] += v[p.REG+j] * vecR[j]; 
+                                        ^
+function.cpp:4844:36: warning: 'p0_r0_r_d2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_d2[r]   = p0_r0_r_d2[r-1]+ (r-1)/((pn+r0[r])*(pn+r0[r]));
+                                    ^
+function.cpp:4843:35: warning: 'p0_r0_1_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_1_2[r]    = p0_r0_1_2[r-1] + 1/((pn+r0[r])*(pn+r0[r]));
+                                   ^
+function.cpp:4842:33: warning: 'p0_r0_1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_1[r]      = p0_r0_1[r-1]   + 1/(pn + r0[r]);
+                                 ^
+function.cpp:4841:79: warning: 'p0_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r_2[r]    = p0_r0_r_2[r-1]  + (r-1)*(r-1)/  ((pn+r0[r])*  (pn+r0[r]));
+                                                                               ^
+function.cpp:4848:69: warning: 'l_r0_r_2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                     ^
+function.cpp:4840:58: warning: 'p0_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    p0_r0_r[r]      = p0_r0_r[r-1]  + (r-1)/  (pn + r0[r]);   
+                                                          ^
+function.cpp:4847:49: warning: 'l_r0_r' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r[r]     = l_r0_r[r-1] + (r-1)/(1+r0[r]);
+                                                 ^
+function.cpp:4672:87: warning: 'l_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   l_r0[0]  = 0; for (r = 1; r <= max_N; r++)  l_r0[r]  =  l_r0[r-1]  + log( 1 + r0[r]);
+                                                                                       ^
+function.cpp:4671:88: warning: 'p0_r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   p0_r0[0] = 0;  for (r = 1; r <= max_M; r++) p0_r0[r]  = p0_r0[r-1]  + log(pn + r0[r]);
+                                                                                        ^
+function.cpp:4848:66: warning: 'r0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    l_r0_r_2[r]   = l_r0_r_2[r-1] + (r-1)*(r-1)/((1+r0[r])*(1+r0[r]));
+                                                                  ^
+function.cpp:5112:29: warning: 'pow1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (d_hap1_permip0_pp / pow1 == 0) {     
+                             ^
+function.cpp: In function 'int eQTL_mapping_per_gene(FILE**, int, int, char**, int*, int*, char**, int*, double*, double, double, int, int, int, int, DATA, PARA, RESULTS, int**)':
+function.cpp:5745:73: warning: 'v_TReCASE' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (ll_TReCASE==0) fprintf(foutpmin[t], "      %7.4lf", v_TReCASE);
+                                                                         ^
+function.cpp:5745:7: warning: 'll_TReCASE' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       if (ll_TReCASE==0) fprintf(foutpmin[t], "      %7.4lf", v_TReCASE);
+       ^
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterative.cpp -o iterative.o
+In file included from iterative.cpp:7:0:
+solver/lbfgsbsolver.h:138:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+     #pragma omp parallel for
+ ^
+iterative.cpp: In function 'double cppoptlib::ASE_lik2(cppoptlib::Vector<double>, cppoptlib::Vector<double>, cppoptlib::Vector<double>, double, int)':
+iterative.cpp:46:7: warning: unused variable 'k' [-Wunused-variable]
+   int k;
+       ^
+iterative.cpp: In function 'double max_trec1irw0(int*, int*, int*, double*, int*, double*, double*, int*)':
+iterative.cpp:115:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:120:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:146:12: warning: unused variable 'trynlin' [-Wunused-variable]
+     double trynlin = nlin[0]; //for line search
+            ^
+iterative.cpp:153:12: warning: variable 'res' set but not used [-Wunused-but-set-variable]
+     double res, x = 0;
+            ^
+iterative.cpp:154:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:154:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:157:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:157:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trec1irw_b0(int*, int*, int*, double*, int*, double*, double*, int*)':
+iterative.cpp:302:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:314:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:345:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:345:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:346:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:346:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trec1irw_b1(int*, int*, int*, double*, int*, double*, double*, int*, double*)':
+iterative.cpp:507:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:551:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:551:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:552:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:552:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b0(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterative.cpp:715:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:727:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now
+               ^
+iterative.cpp:765:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:765:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:766:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:766:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b1(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*, double*)':
+iterative.cpp:951:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:1001:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:1001:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:1002:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:1002:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp: In function 'double max_trecase1irw_b01(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterative.cpp:1188:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterative.cpp:1200:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterative.cpp:1240:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterative.cpp:1240:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterative.cpp:1241:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterative.cpp:1241:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterative.cpp:1242:12: warning: unused variable 'curlbnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+            ^
+iterative.cpp:1242:20: warning: unused variable 'curubnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+                    ^
+iterative.cpp:1243:9: warning: unused variable 'genej' [-Wunused-variable]
+     int genej = 0;
+         ^
+In file included from solver/bfgssolver.h:5:0,
+                 from iterative.cpp:6:
+solver/../linesearch/morethuente.h: In instantiation of 'static int cppoptlib::MoreThuente<Dtype, P, Ord>::cvsrch(P&, cppoptlib::Vector<T>&, Dtype, cppoptlib::Vector<T>&, Dtype&, cppoptlib::Vector<T>&) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]':
+solver/../linesearch/morethuente.h:38:39:   required from 'static Dtype cppoptlib::MoreThuente<Dtype, P, Ord>::linesearch(cppoptlib::Vector<T>&, cppoptlib::Vector<T>&, P&, Dtype) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+solver/bfgssolver.h:37:104:   required from 'void cppoptlib::BfgsSolver<T>::minimize(cppoptlib::Problem<T>&, cppoptlib::Vector<T>&) [with T = double; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+iterative.cpp:1342:43:   required from here
+solver/../linesearch/morethuente.h:99:32: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+       (brackt && (stp <= stmin | stp >= stmax))
+                                ^
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterative2.cpp -o iterative2.o
+iterative2.cpp: In function 'void ase(int*, double*, double*, double*, char**, double*, int*, int*, int*, int*, int*, int*, int*, int*)':
+iterative2.cpp:285:10: warning: unused variable 'pi0' [-Wunused-variable]
+   double pi0, th0, pi1, th1;
+          ^
+iterative2.cpp:376:10: warning: unused variable 'lower0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+          ^
+iterative2.cpp:376:18: warning: unused variable 'upper0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+                  ^
+iterative2.cpp:376:26: warning: unused variable 'grH0' [-Wunused-variable]
+   double lower0, upper0, grH0;
+                          ^
+iterative2.cpp:446:32: warning: variable 'failB' set but not used [-Wunused-but-set-variable]
+   int npara, lmm, fail, failA, failB, fncount, grcount, maxit, nREPORT;
+                                ^
+In file included from iterative2.h:18:0,
+                 from iterative2.cpp:9:
+lbfgsb1.h: At global scope:
+lbfgsb1.h:10:15: warning: 'double fminfn1(int, double*, void*, SEXP)' declared 'static' but never defined [-Wunused-function]
+ static double fminfn1(int n, double *p, void *ex, SEXP x1);
+               ^
+lbfgsb1.h:11:13: warning: 'void fmingr1(int, double*, double*, void*, SEXP)' declared 'static' but never defined [-Wunused-function]
+ static void fmingr1(int n, double *p, double *df, void *ex, SEXP x1);
+             ^
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c iterativesh.cpp -o iterativesh.o
+In file included from iterativesh.cpp:7:0:
+solver/lbfgsbsolver.h:138:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+     #pragma omp parallel for
+ ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b0(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterativesh.cpp:198:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:205:22: warning: unused variable 'res3' [-Wunused-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:210:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now
+               ^
+iterativesh.cpp:248:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:248:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:249:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:249:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b1(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*, double*)':
+iterativesh.cpp:432:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:439:22: warning: unused variable 'res3' [-Wunused-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:482:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:482:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:483:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:483:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp: In function 'double max_trecase1irwsh_b01(int*, int*, int*, int*, double*, double*, double*, int*, double*, double*, int*)':
+iterativesh.cpp:667:40: warning: unused variable 'iter2' [-Wunused-variable]
+     int maxiter = 100,maxiter2=50,iter,iter2,tryiter;
+                                        ^
+iterativesh.cpp:674:22: warning: variable 'res3' set but not used [-Wunused-but-set-variable]
+     double res1,res2,res3;
+                      ^
+iterativesh.cpp:679:15: warning: unused variable 'ngenes' [-Wunused-variable]
+     const int ngenes = Rngenes[0];//number of genes, 1 gene for now    
+               ^
+iterativesh.cpp:719:28: warning: unused variable 'll2' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                            ^
+iterativesh.cpp:719:46: warning: unused variable 'll_old' [-Wunused-variable]
+     double ll1=1e6,ll0=1e6,ll2=1e6,tryll=1e6,ll_old=1e6;
+                                              ^
+iterativesh.cpp:720:19: warning: unused variable 'flag0' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                   ^
+iterativesh.cpp:720:30: warning: unused variable 'flag1' [-Wunused-variable]
+     int flag = 1, flag0 = 1, flag1 = 1;
+                              ^
+iterativesh.cpp:721:12: warning: unused variable 'curlbnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+            ^
+iterativesh.cpp:721:20: warning: unused variable 'curubnd' [-Wunused-variable]
+     double curlbnd,curubnd;
+                    ^
+iterativesh.cpp:722:9: warning: unused variable 'genej' [-Wunused-variable]
+     int genej = 0;
+         ^
+In file included from solver/bfgssolver.h:5:0,
+                 from iterativesh.cpp:6:
+solver/../linesearch/morethuente.h: In instantiation of 'static int cppoptlib::MoreThuente<Dtype, P, Ord>::cvsrch(P&, cppoptlib::Vector<T>&, Dtype, cppoptlib::Vector<T>&, Dtype&, cppoptlib::Vector<T>&) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]':
+solver/../linesearch/morethuente.h:38:39:   required from 'static Dtype cppoptlib::MoreThuente<Dtype, P, Ord>::linesearch(cppoptlib::Vector<T>&, cppoptlib::Vector<T>&, P&, Dtype) [with Dtype = double; P = cppoptlib::Problem<double>&; int Ord = 1; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+solver/bfgssolver.h:37:104:   required from 'void cppoptlib::BfgsSolver<T>::minimize(cppoptlib::Problem<T>&, cppoptlib::Vector<T>&) [with T = double; cppoptlib::Vector<T> = Eigen::Matrix<double, -1, 1>]'
+iterativesh.cpp:821:43:   required from here
+solver/../linesearch/morethuente.h:99:32: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+       (brackt && (stp <= stmin | stp >= stmax))
+                                ^
+c:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"     -I../inst/include   -O2 -Wall  -mtune=generic -c lbfgsb1.cpp -o lbfgsb1.o
+lbfgsb1.cpp: In function 'void setulb1(int, int, double*, double*, double*, int*, double*, double*, double, double*, double*, int*, char*, int, int*, int*, double*)':
+lbfgsb1.cpp:336:15: warning: variable 'l1' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+               ^
+lbfgsb1.cpp:336:19: warning: variable 'l2' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+                   ^
+lbfgsb1.cpp:336:23: warning: variable 'l3' set but not used [-Wunused-but-set-variable]
+     int lsnd, l1, l2, l3, ld, lr, lt;
+                       ^
+lbfgsb1.cpp: In function 'void mainlb1(int, int, double*, double*, double*, int*, double*, double*, double, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int*, int*, int*, char*, int, char*, int*, int*, double*)':
+lbfgsb1.cpp:587:12: warning: variable 'time' set but not used [-Wunused-but-set-variable]
+     double time;
+            ^
+lbfgsb1.cpp: In function 'void prn1lb1(int, int, double*, double*, double*, int, double)':
+lbfgsb1.cpp:3792:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("L =", l, n);
+                         ^
+lbfgsb1.cpp:3793:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("X0 =",x, n);
+                         ^
+lbfgsb1.cpp:3794:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("U =", u, n);
+                         ^
+lbfgsb1.cpp: In function 'void prn2lb1(int, double*, double*, double*, int, int, int, int, double, int, char*, int, int, double, double)':
+lbfgsb1.cpp:3808:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("X =", x, n);
+                         ^
+lbfgsb1.cpp:3809:25: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+      pvector("G =", g, n);
+                         ^
+lbfgsb1.cpp: In function 'void prn3lb1(int, double*, double*, char*, int, int, int, int, int, int, int, double, int, char*, int, double, double, int)':
+lbfgsb1.cpp:3827:40: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  if (iprint >= 100) pvector("X =", x, n);
+                                        ^
+lbfgsb1.cpp: At global scope:
+lbfgsb1.cpp:3983:15: warning: 'double fminfn1(int, double*, void*, SEXP)' defined but not used [-Wunused-function]
+ static double fminfn1(int n, double *p, void *ex, SEXP x1)
+               ^
+lbfgsb1.cpp:4009:13: warning: 'void fmingr1(int, double*, double*, void*, SEXP)' defined but not used [-Wunused-function]
+ static void fmingr1(int n, double *p, double *df, void *ex, SEXP x1)
+             ^
+c:/Rtools/mingw_64/bin/gcc  -I"C:/PROGRA~1/R/R-34~1.4/include" -DNDEBUG  -I"C:/Program Files/R/R-3.4.4/library/RcppEigen/include" -I"C:/Program Files/R/R-3.4.4/library/Rcpp/include"        -O2 -Wall  -std=gnu99 -mtune=generic -c utility.c -o utility.o
+c:/Rtools/mingw_64/bin/g++ -shared -s -static-libgcc -o rcppreqtl.dll tmp.def brent.o function.o iterative.o iterative2.o iterativesh.o lbfgsb1.o utility.o -LC:/PROGRA~1/R/R-34~1.4/bin/x64 -lRlapack -LC:/PROGRA~1/R/R-34~1.4/bin/x64 -lRblas -lgfortran -lm -lquadmath -LC:/PROGRA~1/R/R-34~1.4/bin/x64 -lR
+installing to C:/Users/Vasyl/Documents/rcppreqtl/rcppreqtl.Rcheck/rcppreqtl/libs/x64
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+*** arch - i386
+*** arch - x64
+* DONE (rcppreqtl)
+In R CMD INSTALL

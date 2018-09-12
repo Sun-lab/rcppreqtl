@@ -14,9 +14,9 @@ makeXmatr = function(ss){
   list(Xmatr=Xmatr,  thp=thp)
 }
 
-simu4 = function(num, Xmatr, haplotype, totmean, percase, dblcnt, phiNB, phiBB, b0, b1, betas){
-  library(VGAM)
-  library(MASS)
+simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+  #library(VGAM)
+  #library(MASS)
   
   rho = phiBB/(1+phiBB)
   
@@ -151,15 +151,17 @@ simu4 = function(num, Xmatr, haplotype, totmean, percase, dblcnt, phiNB, phiBB, 
   haplotyped = c(haplotype, haplotype, haplotype, haplotype)
   
   rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
+  haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
   readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
              X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
 }
 
 
-simu2 = function(num, Xmatr, haplotype, totmean, percase, dblcnt, phiNB, phiBB, b0, b1, betas){
-  library(VGAM)
-  library(MASS)
+simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+  #library(VGAM)
+  #library(MASS)
   
   rho = phiBB/(1+phiBB)
   
@@ -263,6 +265,9 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase, dblcnt, phiNB, phiBB, 
   asnpm = cbind(asnp1m, asnp2m)
   haplotyped = c(haplotype, haplotype)
   rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+
+  haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
+  haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
   readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
              X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))

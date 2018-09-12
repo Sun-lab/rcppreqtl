@@ -7,7 +7,7 @@
   Otherwise the model is exactly the same.
 }
 \usage{
-fit(subset=NULL, data, traceit=FALSE)}
+fitsh(subset=NULL, data, traceit=FALSE)}
 \arguments{
   \item{subset}{a subset of entries to be tested, but default is set to NULL which leads to fitting all the genes in the table}
   \item{data}{an object of class readCounts including read counts and necessary supporting information}
@@ -20,7 +20,7 @@ fit(subset=NULL, data, traceit=FALSE)}
   \item{testpoo}{matrix with columns: log(phiNB) and -log(phiBB), coefficients, -log(likelihood) for the restricted to b1=0 model fit}
 }
 \author{ Vasyl Zhabotynsky vasyl@unc.edu }
-\seealso{\code{\link{fitsh}}, \code{\link{data}}, \code{\link{simu}}, \code{\link{readCounts}}.}
+\seealso{\code{\link{fitsh}}, \code{\link{data}}, \code{\link{simu2}}, \code{\link{simu4}}, \code{\link{readCounts}}.}
 \keyword{ methods }
 
 \examples{\dontrun{
@@ -32,12 +32,11 @@ b0 = 0
 b1 = 0
 phiNB = .5;
 phiBB=phiNB/4
-niter = 100
+niter = 10
 betas = c(3,.2,.05,.5)
 ss=2
 
 dep = makeXmatr(ss)
 dat = simu4(num=niter, Xmatr=dep$Xmatr, haplotype=dep$thp, totmean=mn, percase=percase, dblcnt=dblcnt, phiNB=phiNB, phiBB=phiBB, b0=b0, b1=b1, betas=betas)
-commest = fitsh(subset=NULL, data=dat, traceit=FALSE)
-mean(commest$full[,"pval_b0"]<.05)
+fitsh(subset=NULL, data=dat, traceit=FALSE)
 }}

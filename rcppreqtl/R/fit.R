@@ -24,13 +24,13 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
   trcm = data$trc
   asnm = data$asn
   asnpm = data$asnp
-  thp = data$haplotype
 #  if(traceit)message("trace 2")
 
   for(j in 1:nsubit){   
   #j = 1
     i = subset[j]
     inits = c(-2,rep(0,nbeta))
+    thp = data$haplotype[i,]
     trc = trcm[i,]
     asn = asnm[i,]
     asnp = asnpm[i,]
@@ -156,8 +156,8 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
 #  if(traceit)message("trace 6")
   apply(trecase_b01C,2,median)
   
-  pval_b0 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
-  pval_b1 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
+  pval_b1 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
+  pval_b0 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
   if(traceit){
     message("clear fails for full likelihood: ", sum(pval_b0< -.1 | pval_b1< -.1))
   }
@@ -168,7 +168,7 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
   pval_b0 = pchisq(pval_b0, df=1, lower.tail=F)
   pval_b1 = pchisq(pval_b1, df=1, lower.tail=F)
   
-  list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b0C, testpoo=trecase_b1C0)
+  list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b1C0, testpoo=trecase_b0C)
 }
 
 
@@ -317,8 +317,8 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   }
   apply(trecase_b01C,2,median)
   
-  pval_b0 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
-  pval_b1 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
+  pval_b1 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
+  pval_b0 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
   if(traceit){
     message("clear fails for full likelihood: ", sum(pval_b0< -.1 | pval_b1< -.1))
   }
@@ -329,5 +329,5 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   pval_b0 = pchisq(pval_b0, df=1, lower.tail=F)
   pval_b1 = pchisq(pval_b1, df=1, lower.tail=F)
   
-  list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b0C, testpoo=trecase_b1C0)
+  list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b1C0, testpoo=trecase_b0C)
 }

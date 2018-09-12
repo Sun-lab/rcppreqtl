@@ -1,7 +1,7 @@
 readCounts = function(haplotype, trc, asn, asnp, haplotypeA=NULL, asnA=NULL, asnpA=NULL,
              X, params=NULL, settings=NULL)
 {
-  if(ncol(trc) != length(haplotype)){
+  if(ncol(trc) != ncol(haplotype)){
     stop("number of columns of y should match length of kappas")
   }
         rc = list(

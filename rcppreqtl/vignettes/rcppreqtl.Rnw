@@ -26,7 +26,7 @@
 This vignette describes how to use \texttt{R/rcppreqtl} to perform an analysis on 
 RNA-seq data from childrens of genotyped family trios
 <<initialize, results=hide>>=
-library(rcppreqtl, lib.loc="/nas02/home/z/h/zhabotyn/research/package9/")
+library(rcppreqtl)
 @
 <<echo=FALSE, results=hide>>=
 options(width = 80)
