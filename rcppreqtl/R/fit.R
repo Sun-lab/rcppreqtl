@@ -59,10 +59,11 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
     trec_b0C[i,] = initsirw
     
     b0i = initsirw[2];inits1 = initsirw[-(nbeta+3)];inits1[2] = 0
-    b1i = sign(log(mean(trc[thp==1]))-log(mean(trc[thp==2])))
-    if(!is.finite(b1i)){
-      b1i = 0
-    }
+    #b1i = sign(log(mean(trc[thp==1]))-log(mean(trc[thp==2])))
+    #if(!is.finite(b1i)){
+    #  b1i = 0
+    #}
+    b1i = 0
 #  if(traceit)message("trace 2e")
   
     inits1[2] = b1i
