@@ -57,3 +57,43 @@
   #cat("returned: ",Z$optval,"\n")
   return(Z$optval)
 }
+
+`trecase1irw0` = function(trc, asn, asnp, thp, Xmatr, est.inits=TRUE,inits=NULL)
+{
+  nInd = length(trc)
+  nAse = length(asn)
+  nGenes = 1
+  nPar = 3+ncol(Xmatr)
+  
+  if(is.null(inits))inits = rep(0,nPar+1)  
+  if(length(inits)!=nPar){
+    inits = rep(0,nPar+1)
+  }else{
+    inits = c(inits,0)
+  }
+      
+  Z = .C("max_trecase1irw", as.integer(nInd), as.integer(nAse), as.integer(nGenes), as.integer(thp), as.double(trc),as.double(asn),as.double(asnp),
+  as.integer(nPar),optval=as.double(inits),as.double(Xmatr), as.integer(est.inits), PACKAGE="rcppreqtl")
+  #cat("returned: ",Z$optval,"\n")
+  return(Z$optval)
+}
+
+`trecase1irwsh0` = function(trc, asn, asnp, thp, Xmatr, est.inits=TRUE,inits=NULL)
+{
+  nInd = length(trc)
+  nAse = length(asn)
+  nGenes = 1
+  nPar = 3+ncol(Xmatr)
+  
+  if(is.null(inits))inits = rep(0,nPar+1)  
+  if(length(inits)!=nPar){
+    inits = rep(0,nPar+1)
+  }else{
+    inits = c(inits,0)
+  }
+      
+  Z = .C("max_trecase1irwsh", as.integer(nInd), as.integer(nAse), as.integer(nGenes), as.integer(thp), as.double(trc),as.double(asn),as.double(asnp),
+  as.integer(nPar),optval=as.double(inits),as.double(Xmatr), as.integer(est.inits), PACKAGE="rcppreqtl")
+  #cat("returned: ",Z$optval,"\n")
+  return(Z$optval)
+}
