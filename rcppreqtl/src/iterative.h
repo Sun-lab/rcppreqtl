@@ -42,6 +42,60 @@ double max_trecase1irwsh_b01(int* RnInd, int* RnAse, int* Rngenes, int* Rthp, do
                           int* RnPar, double* Rinits, double* RXmatr, int* Restinit);
 
 template<typename T>
+class TRECASEirw_no : public Problem<T> {  
+  public:      
+    // this is just the objective (NOT optional)
+    T value(const Vector<T> &x) {
+      double out = 0, out2 = 0;  
+      double liphi,lphi,b0;
+
+      liphi = this->liphi;
+      lphi = this->lphi;
+      b0 = 0;
+
+      switch ( this->dir ) {
+      case 1:
+        liphi = x[0];
+        break;
+      case 2:
+        lphi = x[0];
+        break;
+      default:
+        b0 = 0;
+        break;
+      }      
+
+      double vals[4] = {0,0,0,0};
+      //vals[1] = log1p(exp(b0))-log1p(1);
+      //vals[2] = vals[1];
+      //vals[3] = b0;
+  
+      for(int i=0;i<this->nInd;i++){
+        this->tmn[i] = this->partmu[i]; + vals[this->thp[i]];
+      }    
+      
+      out = TREC_lik(this->trc,this->trcf,this->tmn,liphi,this->nInd);
+      //calc prob using given b0
+      //vals[0] = 0;  //b1 in full model
+      //vals[1] = b0; //b0+b1 in full model;
+      //vals[2] = -b0;//-b0+b1 in full model
+      //vals[3] = 0;  //b1 in full model
+      //for(int i=0;i<4;i++){
+      //  vals[i] = 1/(1+exp(-vals[i]));
+      //}
+      for(int i=0;i<this->nAse;i++){
+      //  this->prob[i] = vals[this->thp[i]];
+        this->prob[i] = 0.5;
+      }          
+      
+      out2 = ASE_lik(this->asn, this->asnp, this->prob, lphi, this->nAse);
+//      out2 = ASE_lik2(this->asn, this->asnp, this->prob, lphi, this->nAse);
+      out += out2;
+      return out;
+    }
+};
+
+template<typename T>
 class TRECASEirw_b0 : public Problem<T> {  
   public:      
     // this is just the objective (NOT optional)
@@ -93,6 +147,7 @@ class TRECASEirw_b0 : public Problem<T> {
       return out;
     }
 };
+
 template<typename T>
 class TRECASEirw_b1 : public Problem<T> {  
   public:      

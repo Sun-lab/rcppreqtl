@@ -59,11 +59,10 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
     trec_b0C[i,] = initsirw
     
     b0i = initsirw[2];inits1 = initsirw[-(nbeta+3)];inits1[2] = 0
-    #b1i = sign(log(mean(trc[thp==1]))-log(mean(trc[thp==2])))
-    #if(!is.finite(b1i)){
-    #  b1i = 0
-    #}
-    b1i = 0
+    b1i = sign(log(mean(trc[thp==1]))-log(mean(trc[thp==2])))
+    if(!is.finite(b1i)){
+      b1i = 0
+    }
 #  if(traceit)message("trace 2e")
   
     inits1[2] = b1i
@@ -84,7 +83,7 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
   
     #poo est 1 (pre joined)
     fit_b0ta = trecase_b0C[i,3]
-    ini_b1ta = trecase_b0C[i,-8];ini_b1ta[3]=0
+    ini_b1ta = trecase_b0C[i,-(nbeta+4)];ini_b1ta[3]=0
     ini_b1ta[2] = -ini_b1ta[1]
     est_b1ta = trecase1irw_b1(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b1ta,est.inits=F,b0=fit_b0ta)
     trecase_b1C[i,] = est_b1ta
@@ -152,10 +151,10 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
         trecase_b0C[i,] = est_b0ta#fit b1 assuming no b0
       }  
     }
-    if(i%%10==0)cat(i,"'th iteration\n")
+    if(i%%100==0)cat(i,"'th iteration\n")
   }
 #  if(traceit)message("trace 6")
-  apply(trecase_b01C,2,median)
+#  apply(trecase_b01C,2,median)
   
   pval_b1 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
   pval_b0 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
@@ -171,6 +170,8 @@ fit = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameter
   
   list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b1C0, testpoo=trecase_b0C)
 }
+
+
 
 
 #common od assumption
@@ -198,12 +199,12 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   trcm = data$trc
   asnm = data$asn
   asnpm = data$asnp
-  thp = data$haplotype
 
   for(j in 1:nsubit){   
   #j = 1
     i = subset[j]
     inits = c(-2,rep(0,nbeta))
+    thp = data$haplotype[i,]
     trc = trcm[i,]
     asn = asnm[i,]
     asnp = asnpm[i,]
@@ -239,7 +240,7 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
     #short
     #trecase  
     #additive
-    ini_b0ta = c(trec_b0C[i,1],trec_b0C[i,1],trec_b0C[i,-c(1,ll0tr)])
+    ini_b0ta = c(trec_b0C[i,1],-trec_b0C[i,1],trec_b0C[i,-c(1,ll0tr)])
     if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
     if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
     est_b0ta = trecase1irwsh_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
@@ -248,7 +249,7 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   
     #poo est 1 (pre joined)
     fit_b0ta = trecase_b0C[i,3]
-    ini_b1ta = trecase_b0C[i,-8];ini_b1ta[3]=0
+    ini_b1ta = trecase_b0C[i,-(nbeta+4)];ini_b1ta[3]=0
     ini_b1ta[2] = -ini_b1ta[1]
     est_b1ta = trecase1irwsh_b1(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b1ta,est.inits=F,b0=fit_b0ta)
     trecase_b1C[i,] = est_b1ta
@@ -314,9 +315,9 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
         trecase_b0C[i,] = est_b0ta#fit b1 assuming no b0
       }  
     }
-    if(i%%10==0)cat(i,"'th iteration\n")
+    if(i%%100==0)cat(i,"'th iteration\n")
   }
-  apply(trecase_b01C,2,median)
+#  apply(trecase_b01C,2,median)
   
   pval_b1 = 2*(trecase_b0C[, ll0sh]-trecase_b01C[,llfsh])
   pval_b0 = 2*(trecase_b1C0[, ll0sh]-trecase_b01C[,llfsh])
@@ -331,4 +332,194 @@ fitsh = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   pval_b1 = pchisq(pval_b1, df=1, lower.tail=F)
   
   list(full=cbind(trecase_b01C, pval_b0, pval_b1), testadd=trecase_b1C0, testpoo=trecase_b0C)
+}
+
+
+#combined simulation: common and separate OD
+#b0 effect only
+#common od assumption
+fit1m = function(subset=NULL, data, traceit=FALSE){#ensure all the input parameters are there
+#data = dat; subset=1:100; traceit=FALSE
+  #list(haplotype=haplotypef, haplotype4=haplotype, 
+  #  params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt), 
+  #  X=Xmatr, trc=trcm, asn=asnf, asnp=asnpf, asn4=asnm, asnp4=asnpm)
+
+  Xmatr = data$X
+  nbeta = ncol(data$X)
+  llfsh = nbeta + 5  
+  ll0sh = nbeta + 4  
+  ll0tr = nbeta + 3
+  llsh = nbeta + 2
+  if(is.null(subset))subset=1:nrow(data$trc)
+  nsubit = length(subset)
+  trec_shC = matrix(NA,nrow=nsubit,ncol=llsh)
+  trec_b0C = trec_b1C = matrix(NA,nrow=nsubit,ncol=ll0tr)
+  trecase_b0C = matrix(NA,nrow=nsubit,ncol=ll0sh)
+  rownames(trec_shC) = rownames(trec_b0C) = rownames(trecase_b0C) = rownames(data$trc)[subset]
+  trecase_0f = trecase_0 = trecase_b0Cf = trecase_b0C
+  trcm = data$trc
+  asnm = data$asn
+  asnpm = data$asnp
+
+  for(j in 1:nsubit){   
+  #j = 1
+    i = subset[j]
+    inits = c(-2,rep(0,nbeta))
+    thp = data$haplotype[i,]
+    trc = trcm[i,]
+    asn = asnm[i,]
+    asnp = asnpm[i,]
+    
+    initsirw0 = trec1irw0(trc=trc,thp=thp,Xmatr=Xmatr,inits=inits,est.inits=T)
+    if(any(!is.finite(initsirw0))){
+      initsirw0 = trec1irw0(trc=trc,thp=thp,Xmatr=Xmatr,inits=inits,est.inits=F)
+    }  
+    trec_shC[i,]=initsirw0
+    b0i = log(median(trc[thp==3]))-log(median(trc[thp==0]))
+    b0i2 = log((median(trc[thp==1])+median(trc[thp==2]))/2)-log(median(trc[thp==0]))
+    if(!is.finite(b0i)){
+      b0i = b0i2
+    }
+    if(!is.finite((b0i+b0i2)/2)){
+      b0i = 0
+    }
+    inits0 = c(initsirw0[1],b0i,initsirw0[-c(1,length(initsirw0))])
+    initsirw = trec1irw_b0(trc=trc,thp=thp,Xmatr=Xmatr,inits=inits0,est.inits=F)
+    trec_b0C[i,] = initsirw
+    
+    b0i = initsirw[2];inits1 = initsirw[-(nbeta+3)];inits1[2] = 0
+    b1i = sign(log(mean(trc[thp==1]))-log(mean(trc[thp==2])))
+    if(!is.finite(b1i)){
+      b1i = 0
+    }
+  
+    inits1[2] = b1i
+    initsirw = trec1irw_b1(trc=trc,thp=thp,Xmatr=Xmatr,inits=inits1,est.inits=F,b0=b0i)
+    trec_b1C[i,] = initsirw
+    trec_b1C[i,]
+    
+    #short  (1od)
+    #trecase
+    #no effects
+    ini_b0ta = c(trec_b0C[i,1],-trec_b0C[i,1],trec_b0C[i,-c(1,ll0tr)])
+    if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+    if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+    est_0ta = trecase1irwsh0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+    trecase_0[i,] = est_0ta#fit b0 assuming no b1
+    trecase_0[i,]
+
+    #additive
+    ini_b0ta = trecase_0[i,-ll0sh]
+    if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+    if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+    est_b0ta = trecase1irwsh_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+    trecase_b0C[i,] = est_b0ta#fit b0 assuming no b1
+    trecase_b0C[i,]
+ 
+    #redo no eff
+    ini_b0ta = trecase_b0C[i,-ll0sh]
+    if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+    if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+    est_0ta = trecase1irwsh0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+    est_0ta
+    trecase_0[i,]
+    trecase_0[i,] = est_0ta#fit b0 assuming no b1
+    trecase_0[i,]
+    
+  
+    rerun = F
+    if(est_0ta[ll0sh] < (trecase_b0C[i,ll0sh])){
+      rerun = T
+    }
+
+    if(rerun){  
+      #redo no eff
+      ini_b0ta = trecase_b0C[i,-ll0sh]
+      if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+      if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+      est_0ta = trecase1irwsh0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+      est_0ta
+      if(est_0ta[ll0sh] < (trecase_0[i,ll0sh])){
+        trecase_0[i,] = est_0ta#fit b1 assuming no b0
+      }  
+
+      #additive
+      ini_b0ta = trecase_b0C[i,-ll0sh]
+      if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+      if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+      est_b0ta = trecase1irwsh_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+      if(est_b0ta[ll0sh] < (trecase_b0C[i,ll0sh])){
+        trecase_b0C[i,] = est_b0ta#fit b1 assuming no b0
+      }  
+      #trecase_b0C[i,] = est_b0ta#fit b0 assuming no b1
+      trecase_b0C[i,]
+
+    }
+    
+    #full  (2od)
+    #trecase
+    #no effects
+    ini_b0ta = trecase_b0C[i,-ll0sh]
+    if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+    if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+    est_0ta = trecase1irw0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+    trecase_0f[i,] = est_0ta#fit b0 assuming no b1
+    trecase_0f[i,]
+
+    #additive
+    ini_b0ta = trecase_b0C[i,-ll0sh]
+    if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+    if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+    est_b0ta = trecase1irw_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+    trecase_b0Cf[i,] = est_b0ta#fit b0 assuming no b1
+    trecase_b0Cf[i,]
+    #cbind(trecase_0[i,], trecase_b0C[i,], trecase_0f[i,], trecase_b0Cf[i,])
+
+    rerun = F
+    if(est_0ta[ll0sh] < (trecase_b0Cf[i,ll0sh])){
+      rerun = T
+    }
+
+    if(rerun){  
+      #redo no eff
+      ini_b0ta = trecase_b0Cf[i,-ll0sh]
+      if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+      if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+      est_0ta = trecase1irw0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+      est_0ta
+      if(est_0ta[ll0sh] < (trecase_0[i,ll0sh])){
+        trecase_0f[i,] = est_0ta#fit b1 assuming no b0
+      }  
+
+      #additive
+      ini_b0ta = trecase_b0Cf[i,-ll0sh]
+      if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
+      if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
+      est_b0ta = trecase1irw_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
+      if(est_b0ta[ll0sh] < (trecase_b0C[i,ll0sh])){
+        trecase_b0Cf[i,] = est_b0ta#fit b1 assuming no b0
+      }  
+      #trecase_b0Cf[i,] = est_b0ta#fit b0 assuming no b1
+      trecase_b0Cf[i,]
+
+    }
+    
+
+    if(i%%100==0)cat(i,"'th iteration\n")
+  }
+#  apply(trecase_b01C,2,median)
+  
+  pval_s = 2*(trecase_0[,ll0sh] -trecase_b0C[, ll0sh])
+  pval_f = 2*(trecase_0f[, ll0sh]-trecase_b0Cf[,ll0sh])
+  if(traceit){
+    message("clear fails for full likelihood: ", sum(pval_s< -.1 | pval_f< -.1))
+  }
+  fixf = pval_f<0
+  fixs = pval_s<0
+  pval_s[fixs] = 0
+  pval_f[fixf] = 0
+  pval_s = pchisq(pval_s, df=1, lower.tail=F)
+  pval_f = pchisq(pval_f, df=1, lower.tail=F)
+  
+  list(full=cbind(trecase_b0Cf, pval_f), short=cbind(trecase_b0C, pval_s), testaddf=trecase_0f, testadds=trecase_0)
 }
