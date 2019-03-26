@@ -1,7 +1,8 @@
 makeXmatr = function(ss){
   thp = rep(0:3,8)
   nind = length(thp)
-  Xmatr = matrix(c(rep(1,nind),rep(0:1,each=nind/2),rep(0:3,each=nind/4),rnorm(nind)),ncol=4)
+  Xmatr = matrix(c(rep(1,nind),rep(0:1,each=nind/2),rep(0:3,each=nind/4),rnorm(nind)),
+                 ncol=4)
   
   if(ss>1){
     for(j in 2:ss){
@@ -14,7 +15,8 @@ makeXmatr = function(ss){
   list(Xmatr=Xmatr,  thp=thp)
 }
 
-simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, 
+                phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
   #library(VGAM)
   #library(MASS)
   
@@ -45,7 +47,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
   prb = logiti(prb)
 
   asn10 = asn20 = asn30 = asn40 = asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+    trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -150,16 +153,20 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
   asnpm = cbind(asnp1m, asnp2m, asnp3m, asnp4m)
   haplotyped = c(haplotype, haplotype, haplotype, haplotype)
   
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
-  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, 
+             haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
 
-simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, 
+                 phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
   #library(VGAM)
   #library(MASS)
   
@@ -190,7 +197,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   prb = logiti(prb)
 
   asn10 = asn20 = asn30 = asn40 = asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+    asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+    trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -264,11 +272,14 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   asnm = cbind(asn1m, asn2m)
   asnpm = cbind(asnp1m, asnp2m)
   haplotyped = c(haplotype, haplotype)
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
 
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
-  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, 
+             haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }

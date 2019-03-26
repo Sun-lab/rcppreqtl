@@ -1,9 +1,8 @@
 \name{fit}
 \alias{fit}
-\title{Optimization wrapper, maximizing the joint model of total (TReC) and allele specific (ASE) counts for autosomes}
+\title{Model fit for autosomal genes to estimate/test genetic and parent of oirgin effect}
 \description{
-  Performs optimization of joint TReC and ASE for autosome and tests with lrt test for two hypotheses hypotheses:
-  additive and parent of origin.
+  Performs optimization of joint total read count (TReC) and allele specific expression (ASE) for autosome and tests with lrt test for two hypotheses: additive genetic effect is 0 and parent of origin effect is 0.
 }
 \usage{
 fit(subset=NULL, data, traceit=FALSE)

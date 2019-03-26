@@ -1,10 +1,8 @@
 \name{fitsh}
 \alias{fitsh}
-\title{Optimization wrapper, maximizing the joint model of total (TReC) and allele specific (ASE) counts for autosomes}
+\title{Model fit for autosomal genes to estimate/test genetic and parent of oirgin effect, with shared over-dispersion}
 \description{
-  Performs optimization of joint TReC and ASE for autosome and tests with lrt test for two hypotheses hypotheses:
-  additive and parent of origin. This function modification assumes that phiNB and phiBB are common for the gene of interest. 
-  Otherwise the model is exactly the same.
+  Performs optimization of joint TReC and ASE for autosome and tests with lrt test for two hypotheses: additive genetic effect is 0 and parent of origin effect is 0. This function modification assumes that phiNB and phiBB are common for the gene of interest. Otherwise the model is exactly the same as function \code{fit}
 }
 \usage{
 fitsh(subset=NULL, data, traceit=FALSE)}
