@@ -1,4 +1,3 @@
-
 makeXmatr = function(ss){
   thp = rep(0:3,8)
   nind = length(thp)
@@ -562,7 +561,7 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
 
   #asnm4 = cbind(asn4S1m, asn4S2m, asn4S3m, asn4S4m)
   #asnpm4 = cbind(asnp4S1m, asnp4S2m, asnp4S3m, asnp4S4m)
-  asnm4 = cbind(asn4S1d, asn4S1d, asn4S1d, asn4S1d)
+  asnm4 = cbind(asn4S1d, asn4S2d, asn4S3d, asn4S4d)
   asnpm4 = cbind(asnp4S1d, asnp4S2d, asnp4S3d, asnp4S4d)
 
   #asnm2 = cbind(asn2S1m, asn2S2m)
@@ -571,7 +570,7 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   asnpm2 = cbind(asnp2S1d, asnp2S2d)
   
   asnm1 = asn1S1m
-  asnpm1 = asnp2S1m
+  asnpm1 = asnp1S1m
 
   rownames(asnm1) = rownames(asnpm1) = 
   rownames(asnm2) = rownames(asnpm2) = 
