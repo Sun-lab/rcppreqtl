@@ -1,2 +1,2 @@
 # rcppreqtl
-package for fitting additive+poo effect in trio experiment
+package for fitting genetic and parent-of-origin effect using RNA-seq data from family trio studies. 

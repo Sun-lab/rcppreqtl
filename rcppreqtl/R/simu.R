@@ -1,3 +1,4 @@
+
 makeXmatr = function(ss){
   thp = rep(0:3,8)
   nind = length(thp)

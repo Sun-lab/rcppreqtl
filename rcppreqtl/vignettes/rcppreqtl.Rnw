@@ -14,7 +14,7 @@
 
 \title{Joing estimation of additive and parent of origin effects in trios}
 
-\author{Vasyl Zhabotynsky \thanks{vasyl@unc.edu} \and Wei Sun \and Kaoru Inoue \and Terry Magnuson \and Mauro Calabrese}
+\author{Vasyl Zhabotynsky \thanks{vasyl@unc.edu} \and Kaoru Inoue \and Terry Magnuson \and Mauro Calabrese \and Wei Sun}
 
 
 \begin{document}
@@ -46,7 +46,7 @@ In the provided data example the counts are aggregated on gene level, though as 
 \section{Citing \texttt{R/rcppreqtl}}
 When using the results from the \texttt{R/rcppreqtl} package, please cite:
 \begin{quote}
-Zhabotynsky, Vasyl, Sun, Wei, Inoue, Kaoru, Magnuson, Terry, Calabrese, Mauro (2018) {TReCASE under family trio design: A Statistical Method for Joint Estimation of \textit{Cis}-eQTLs and Parent-of-Origin Effects under Family Trio Design
+Zhabotynsky, Vasyl, Inoue, Kaoru, Magnuson, Terry, Calabrese, Mauro Sun, Wei (2018) {TReCASE under family trio design: A Statistical Method for Joint Estimation of \textit{Cis}-eQTLs and Parent-of-Origin Effects under Family Trio Design
 }
 \end{quote}
 The article describes the methodological framework behind the \texttt{R/rcppreqtl} package.
