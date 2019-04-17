@@ -15,7 +15,8 @@ makeXmatr = function(ss){
 }
 
 
-simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
+                      phiBB=0.5, b0=0, b1=0, betas=rep(1,4), phiBBw=NULL){
   #library(VGAM)
   #library(MASS)
   
@@ -79,9 +80,14 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
     }else{
       prb1 = prb
     }
-    asnp1 = rbinom(nind, size=asn1,prob=prb1)
-    asnp2 = rbinom(nind, size=asn2,prob=prb1)
-    
+    if(is.null(phiBBw)){
+      asnp1 = rbinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbinom(nind, size=asn2,prob=prb1)
+    }else{
+      rhoW = phiBBw/(1+phiBBw)
+      asnp1 = rbetabinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbetabinom(nind, size=asn2,prob=prb1)
+    }    
 
     trcm[i,] = trc
 
@@ -136,7 +142,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
 }
 
 
-simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
+                     phiBB=0.5, b0=0, b1=0, betas=rep(1,4), phiBBw=NULL){
   #library(VGAM)
   #library(MASS)
   
@@ -205,11 +212,18 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
     }else{
       prb1 = prb
     }
-    asnp1 = rbinom(nind, size=asn1,prob=prb1)
-    asnp2 = rbinom(nind, size=asn2,prob=prb1)
-    asnp3 = rbinom(nind, size=asn3,prob=prb1)
-    asnp4 = rbinom(nind, size=asn4,prob=prb1)    
-
+    if(is.null(phiBBw)){
+      asnp1 = rbinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbinom(nind, size=asn2,prob=prb1)
+      asnp3 = rbinom(nind, size=asn3,prob=prb1)
+      asnp4 = rbinom(nind, size=asn4,prob=prb1)    
+    }else{
+      rhoW = phiBBw/(1+phiBBw)
+      asnp1 = rbetabinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbetabinom(nind, size=asn2,prob=prb1)
+      asnp3 = rbetabinom(nind, size=asn3,prob=prb1)
+      asnp4 = rbetabinom(nind, size=asn4,prob=prb1)    
+    }
     trcm[i,] = trc
 
     asn1m[i,] = asn10[i,] = asn1
@@ -286,7 +300,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
 
 
 
-simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
+                      phiBB=0.5, b0=0, b1=0, betas=rep(1,4), phiBBw=NULL){
 #num=niter;Xmatr=Xm$Xmatr; haplotype=Xm$thp; totmean=100; percase=0.2; dblcnt=0.2; phiNB=1; phiBB=0.5; b0=0; b1=0; betas=rep(1,4)
 #dblcnt=0
   #library(VGAM)
@@ -368,15 +383,26 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
     asn8d = asn7d = asn6d = asn5d = asn4d = asn3d = asn2d = asn1d = 
     asnp4d = asnp3d = asnp2d = asnp1d = asnp5d = asnp6d = asnp7d = asnp8d = rep(0, nind)    
 
-    asnp1 = rbinom(nind, size=asn1,prob=prb1)
-    asnp2 = rbinom(nind, size=asn2,prob=prb1)
-    asnp3 = rbinom(nind, size=asn3,prob=prb1)
-    asnp4 = rbinom(nind, size=asn4,prob=prb1)
-    asnp5 = rbinom(nind, size=asn5,prob=prb1)
-    asnp6 = rbinom(nind, size=asn6,prob=prb1)
-    asnp7 = rbinom(nind, size=asn7,prob=prb1)
-    asnp8 = rbinom(nind, size=asn8,prob=prb1)
-
+    if(is.null(phiBBw)){
+      asnp1 = rbinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbinom(nind, size=asn2,prob=prb1)
+      asnp3 = rbinom(nind, size=asn3,prob=prb1)
+      asnp4 = rbinom(nind, size=asn4,prob=prb1)
+      asnp5 = rbinom(nind, size=asn5,prob=prb1)
+      asnp6 = rbinom(nind, size=asn6,prob=prb1)
+      asnp7 = rbinom(nind, size=asn7,prob=prb1)
+      asnp8 = rbinom(nind, size=asn8,prob=prb1)
+    }else{
+      rhoW = phiBBw/(1+phiBBw)
+      asnp1 = rbetabinom(nind, size=asn1,prob=prb1)
+      asnp2 = rbetabinom(nind, size=asn2,prob=prb1)
+      asnp3 = rbetabinom(nind, size=asn3,prob=prb1)
+      asnp4 = rbetabinom(nind, size=asn4,prob=prb1)
+      asnp5 = rbetabinom(nind, size=asn5,prob=prb1)
+      asnp6 = rbetabinom(nind, size=asn6,prob=prb1)
+      asnp7 = rbetabinom(nind, size=asn7,prob=prb1)
+      asnp8 = rbetabinom(nind, size=asn8,prob=prb1)
+    }
     trcm[i,] = trc
 
     asn10[i,] = asn1
