@@ -362,7 +362,7 @@ fit1m = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
   asnpm = data$asnp
 
   for(j in 1:nsubit){   
-  #j = 1
+  #j = 1;
     i = subset[j]
     inits = c(-2,rep(0,nbeta))
     thp = data$haplotype[i,]
@@ -463,7 +463,7 @@ fit1m = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
     if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
     if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
     est_0ta = trecase1irw0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
-    trecase_0f[i,] = est_0ta#fit b0 assuming no b1
+    trecase_0f[i,] = est_0ta#fit H0: b0=0
     trecase_0f[i,]
 
     #additive
@@ -471,7 +471,7 @@ fit1m = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
     if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
     if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
     est_b0ta = trecase1irw_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
-    trecase_b0Cf[i,] = est_b0ta#fit b0 assuming no b1
+    trecase_b0Cf[i,] = est_b0ta#fit H1 (with b0) assuming no b1
     trecase_b0Cf[i,]
     #cbind(trecase_0[i,], trecase_b0C[i,], trecase_0f[i,], trecase_b0Cf[i,])
 
@@ -479,31 +479,35 @@ fit1m = function(subset=NULL, data, traceit=FALSE){#ensure all the input paramet
     if(est_0ta[ll0sh] < (trecase_b0Cf[i,ll0sh])){
       rerun = T
     }
-
+    
     if(rerun){  
       #redo no eff
-      ini_b0ta = trecase_b0Cf[i,-ll0sh]
+      ini_b0ta = est_0ta
       if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
       if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
       est_0ta = trecase1irw0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
       est_0ta
       if(est_0ta[ll0sh] < (trecase_0[i,ll0sh])){
-        trecase_0f[i,] = est_0ta#fit b1 assuming no b0
+        trecase_0f[i,] = est_0ta#fit H0: b0=0
       }  
-
+      trecase_0f[i,] 
+      trecase_b0Cf[i,]
+      
       #additive
-      ini_b0ta = trecase_b0Cf[i,-ll0sh]
+      ini_b0ta = est_0ta
       if(abs(ini_b0ta[3])>8)ini_b0ta[3]=sign(ini_b0ta[3])*8
       if(abs(ini_b0ta[4])>8)ini_b0ta[4]=sign(ini_b0ta[4])*8
       est_b0ta = trecase1irw_b0(trc=trc,asn=asn,asnp=asnp,thp=thp,Xmatr=Xmatr,inits=ini_b0ta,est.inits=F)
       if(est_b0ta[ll0sh] < (trecase_b0C[i,ll0sh])){
-        trecase_b0Cf[i,] = est_b0ta#fit b1 assuming no b0
+        trecase_b0Cf[i,] = est_b0ta#fit H1 (with b0) assuming no b1
       }  
-      #trecase_b0Cf[i,] = est_b0ta#fit b0 assuming no b1
-      trecase_b0Cf[i,]
-
+      trecase_b0Cf[i,] = est_b0ta#fit b0 assuming no b1
+      trecase_0f[i,] 
+      trecase_b0Cf[i,]      
     }
-    
+
+    #if(est_0ta[ll0sh] < (trecase_b0Cf[i,ll0sh])){message(j);stop()} 
+   
 
     if(i%%100==0)cat(i,"'th iteration\n")
   }
