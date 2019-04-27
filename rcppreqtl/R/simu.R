@@ -124,17 +124,21 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0,
   asnm = cbind(asn1m, asn2m)
   asnpm = cbind(asnp1m, asnp2m)
   haplotyped = c(haplotype, haplotype)
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
 
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
-  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, 
+             haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
 
-simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0,
+                phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
   #library(VGAM)
   #library(MASS)
   
@@ -270,7 +274,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
   asnpm = cbind(asnp1m, asnp2m, asnp3m, asnp4m)
   haplotyped = c(haplotype, haplotype, haplotype, haplotype)
   
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
@@ -476,7 +481,8 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0,
   asnpm = cbind(asnp1m, asnp2m, asnp3m, asnp4m, asnp5m, asnp6m, asnp7m, asnp8m)
   haplotyped = c(haplotype, haplotype, haplotype, haplotype, haplotype, haplotype, haplotype, haplotype)
   
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
@@ -535,7 +541,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   prb = logiti(prb)
 
   asn10 = asn20 = asn30 = asn40 = asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+    trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -615,7 +622,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   asnm = cbind(asn1m, asn2m)
   asnpm = cbind(asnp1m, asnp2m)
   haplotyped = c(haplotype, haplotype)
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
 
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)#multisnp
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
@@ -624,9 +632,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
              haplotype2S=haplotyped, asn2S=asnm, asnp2S=asnpm,
              haplotype4S=NULL, asn4S=NULL, asnp4S=NULL,
              haplotype8S=NULL, asn8S=NULL, asnp8S=NULL,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
-#  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-#             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
 
@@ -663,7 +670,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
 
   asn10 = asn20 = asn30 = asn40 = 
   asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+    trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -773,7 +781,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   asnpm = cbind(asnp1m, asnp2m, asnp3m, asnp4m)
   haplotyped = c(haplotype, haplotype, haplotype, haplotype)
   
-  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = rownames(trcm) = sprintf("gene%s", 1:num)
+  rownames(asnf) = rownames(asnpf) = rownames(asnm) = rownames(asnpm) = 
+    rownames(trcm) = sprintf("gene%s", 1:num)
   haplotype1S = matrix(rep(haplotypef, each=num), nrow=num)
   haplotype4S = matrix(rep(haplotyped, each=num), nrow=num)
 
@@ -781,20 +790,15 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
              haplotype2S=NULL, asn2S=NULL, asnp2S=NULL,
              haplotype4S=haplotype4S, asn4S=asnm, asnp4S=asnpm,
              haplotype8S=NULL, asn8S=NULL, asnp8S=NULL,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
-#  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-#             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
 
 
 simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
                       phiBB=0.5, b0=0, b1=0, betas=rep(1,4), phiBBw=NULL){
-#num=niter;Xmatr=Xm$Xmatr; haplotype=Xm$thp; totmean=100; percase=0.2; dblcnt=0.2; phiNB=1; phiBB=0.5; b0=0; b1=0; betas=rep(1,4)
-#dblcnt=0
-  #library(VGAM)
-  #library(MASS)
-  
+
   rho = phiBB/(1+phiBB)
   
   nind = length(haplotype)
@@ -1099,6 +1103,7 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
              haplotype2S=haplotype2S, asn2S=asnm2, asnp2S=asnpm2,
              haplotype4S=haplotype4S, asn4S=asnm4, asnp4S=asnpm4,
              haplotype8S=haplotype8S, asn8S=asnm8, asnp8S=asnpm8,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
