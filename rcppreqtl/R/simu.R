@@ -16,7 +16,8 @@ makeXmatr = function(ss){
 }
 
 
-simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, 
+                 phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
   #library(VGAM)
   #library(MASS)
   
@@ -47,7 +48,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   prb = logiti(prb)
 
   asn10 = asn20 = asn30 = asn40 = asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+   trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -80,8 +82,8 @@ simu2 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
     }else{
       prb1 = prb
     }
-    asnp1 = rbinom(nind, size=asn1,prob=prb1)
-    asnp2 = rbinom(nind, size=asn2,prob=prb1)
+    asnp1 = rbinom(nind, size=asn1, prob=prb1)
+    asnp2 = rbinom(nind, size=asn2, prob=prb1)
     
 
     trcm[i,] = trc
@@ -164,7 +166,8 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
 
   asn10 = asn20 = asn30 = asn40 = 
   asnp10 = asnp20 = asnp30 = asnp40 =
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = 
+    asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -201,10 +204,10 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
     }else{
       prb1 = prb
     }
-    asnp1 = rbinom(nind, size=asn1,prob=prb1)
-    asnp2 = rbinom(nind, size=asn2,prob=prb1)
-    asnp3 = rbinom(nind, size=asn3,prob=prb1)
-    asnp4 = rbinom(nind, size=asn4,prob=prb1)    
+    asnp1 = rbinom(nind, size=asn1, prob=prb1)
+    asnp2 = rbinom(nind, size=asn2, prob=prb1)
+    asnp3 = rbinom(nind, size=asn3, prob=prb1)
+    asnp4 = rbinom(nind, size=asn4, prob=prb1)    
 
     trcm[i,] = trc
 
@@ -271,13 +274,16 @@ simu4= function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, 
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
-  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, 
+             haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
 
 
-simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
+simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, 
+                 phiNB=1, phiBB=0.5, b0=0, b1=0, betas=rep(1,4)){
   #library(VGAM)
   #library(MASS)
   
@@ -310,7 +316,8 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   asn10 = asn20 = asn30 = asn40 =  asn50 = asn60 = asn70 = asn80 = 
   asnp10 = asnp20 = asnp30 = asnp40 = asnp50 = asnp60 = asnp70 = asnp80 =
   asn8m = asnp8m = asn7m = asnp7m = asn6m = asnp6m = asn5m = asnp5m = 
-  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = trcm = matrix(NA,nrow=num,ncol=nind)
+  asn4m = asnp4m = asn3m = asnp3m = asn2m = asnp2m = asn1m = asnp1m = 
+    trcm = matrix(NA,nrow=num,ncol=nind)
   #having
   # np/(alpha+beta)= n p and
   #(alpha+beta+n)/(alpha+beta+1)=[1+(n-1)rho]
@@ -473,7 +480,9 @@ simu8 = function(num, Xmatr, haplotype, totmean, percase=0.1, dblcnt=0, phiNB=1,
   haplotyped = matrix(rep(haplotyped, each=num), nrow=num)
   haplotypef = matrix(rep(haplotypef, each=num), nrow=num)
 
-  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
-             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), settings=c(totmean, percase, dblcnt))
+  readCounts(haplotype=haplotypef, trc=trcm, asn=asnf, asnp=asnpf, 
+             haplotypeA=haplotyped, asnA=asnm, asnpA=asnpm,
+             X=Xmatr, params=c(phiNB, phiBB, b0, b1, betas), 
+             settings=c(totmean, percase, dblcnt))
 }
 
